@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Power of a lamp</title>
+    <title>Power of a incandescent lamp</title>
     <style>
         body {
             background-color: rgb(246, 190, 220);
@@ -12,7 +12,7 @@
             width: 400px;
             margin: 50px auto;
             text-align: center;
-            background-color: rgb(247, 245, 201);
+            background-color: rgb(250, 248, 170);
             color: rgb(28, 92, 49);
             padding: 20px;
             border: 3px dashed rgb(3, 16, 19);
@@ -34,21 +34,21 @@
 </head>
 <body>
     <div class="container">
-    <h1>Power of a lamp</h1>
+    <h1>POWER OF A LAMP</h1>
 
     <form method="POST">
         {% csrf_token %}
         <label for="intensity">Intensity (I in Amps):</label>
-        <input type="text" name="intensity" id="intensity" required><br><br>
+        <input type="number" name="intensity" value="{{ intensity }}" step="any" placeholder="Enter Intensity" required><br><br>
 
         <label for="resistance">Resistance (R in Ohms):</label>
-        <input type="text" name="resistance" id="resistance" required><br><br>
+        <input type="number" name="resistance" value="{{ resistance }}" step="any" placeholder="Enter Resistance" required><br><br>
 
         <button type="submit"><b>Hit me</b></button>
     </form>
 
     {% if power is not None %}
-        <h2>Calculated Power: {{ power }} Watts</h2>
+        <h2> Power: {{ power }} Watts</h2>
     {% endif %}
 </div>
 </body>

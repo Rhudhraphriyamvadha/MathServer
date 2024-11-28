@@ -1,12 +1,15 @@
 from django.shortcuts import render
 
 def power_calculator(request):
-    power = None  
+    power = None 
+    intensity = None
+    resistance = None 
 
     if request.method == 'POST':
+        print("POST method is used")
         
-        intensity = request.POST.get('intensity')
-        resistance = request.POST.get('resistance')
+        intensity = request.POST.get('intensity','0')
+        resistance = request.POST.get('resistance','0')
 
         
         if intensity and resistance:
@@ -15,6 +18,7 @@ def power_calculator(request):
                 I = float(intensity)
                 R = float(resistance)
                 power = I**2 * R
+                print('request=',request)
                 print('intensity=',I)
                 print('resistance=',R)
                 print('power=',power)  
@@ -23,4 +27,4 @@ def power_calculator(request):
                 power = "Invalid input. Please enter numerical values."
 
     
-    return render(request, 'mathapp/mathserver.html', {'power': power})
+    return render(request, 'mathapp/mathserver.html', {'power': power, 'intensity': intensity, 'resistance': resistance})
